@@ -5,6 +5,7 @@ import cv2
 import numpy as np
 
 from src.settings import CATEGORY_2_IDX
+from src.settings import IMG_HEIGHT, IMG_WIDTH
 
 
 def divide_face_imgs():
@@ -30,7 +31,7 @@ def divide_non_face_imgs():
     return train_img_path_list, test_img_path_list
 
 
-def read_imgs(img_path_list, IMG_HEIGHT, IMG_WIDTH, ):
+def read_imgs(img_path_list):
     img_list = []
     for img_path in img_path_list:
         img = cv2.imread(img_path, cv2.IMREAD_GRAYSCALE)
