@@ -12,6 +12,7 @@ from src.models.model_resnet import resnet18
 from src.settings import CHECKPOINT_DIR
 from src.settings import IMG_SHAPE
 
+# TODO: Change BATCH size
 PRETRAIN_BATCH_SIZE = 1024 * 3
 FINETUNE_BATCH_SIZE = 80
 PER_SUB_IMGCOUNT = 2
@@ -49,7 +50,7 @@ def train_single_epoch(model, train_dataloader):
 
         y_embd = model(inp_tensor.cuda())
 
-        loss = criterion(y_embd, ids)
+        loss = criterion((y_embd, ids))
         loss.backward()
         optimizer.step()
 
@@ -69,21 +70,25 @@ if __name__ == '__main__':
     pre_checkpoint_path = os.path.join(CHECKPOINT_DIR, "face_identification_pretrain.pt")
     pre_train_dataloader = get_pretrain_dataloader(PRETRAIN_BATCH_SIZE, train_transform, PER_SUB_IMGCOUNT)
 
-    for epoch in tqdm(range(PRETRAIN_EPOCHS)):
-        train_single_epoch(model, pre_train_dataloader)
-
-        torch.save({
-            'epoch': epoch,
-            'stage': "pretrain",
-            'model_state_dict': model.state_dict(),
-            'optimizer_state_dict': optimizer.state_dict(),
-        }, pre_checkpoint_path)
+    # for epoch in tqdm(range(PRETRAIN_EPOCHS)):
+    #     train_single_epoch(model, pre_train_dataloader)
+    #
+    #     torch.save({
+    #         'epoch': epoch,
+    #         'stage': "pretrain",
+    #         'model_state_dict': model.state_dict(),
+    #         'optimizer_state_dict': optimizer.state_dict(),
+    #     }, pre_checkpoint_path)
 
     checkpoint_path = os.path.join(CHECKPOINT_DIR, "face_identification.pt")
     finetune_dataloader = get_face_id_finetune_dataloaders(FINETUNE_BATCH_SIZE, train_transform, PER_SUB_IMGCOUNT)
+    # print(next(iter(pre_train_dataloader)))
+    # t = next(iter(finetune_dataloader))
+    # print(t)
+    # print(next(iter(t)))
 
     for epoch in tqdm(range(FINETUNE_EPOCHS)):
-        train_single_epoch(model, finetune_dataloader)
+        train_single_epoch(model, next(iter(finetune_dataloader)))
 
         torch.save({
             'epoch': epoch,

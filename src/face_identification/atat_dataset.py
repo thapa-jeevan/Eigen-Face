@@ -62,7 +62,10 @@ class ATATTestDataset(Dataset):
         self.subj_ids = subj_ids
         self.transform = transform
 
-    def __get_item__(self, idx):
+    def __len__(self):
+        return len(self.subj_ids)
+
+    def __getitem__(self, idx):
         img_path = self.img_path_list[idx]
         subj_id = self.subj_ids[idx]
         img = Image.open(img_path).convert('L')

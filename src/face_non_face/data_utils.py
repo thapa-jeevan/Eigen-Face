@@ -40,18 +40,21 @@ def read_imgs(img_path_list):
     return np.vstack(img_list)
 
 
-def get_face_cls_data():
+def get_face_cls_data(read_img=True):
     train_faces, test_faces = divide_face_imgs()
     train_non_faces, test_non_faces = divide_non_face_imgs()
 
     train_imgs = train_faces + train_non_faces
-    X_train = read_imgs(train_imgs)
     y_train = np.array(
         [CATEGORY_2_IDX["face"]] * len(train_faces) + [CATEGORY_2_IDX["non-face"]] * len(train_non_faces))
 
     test_imgs = test_faces + test_non_faces
-    X_test = read_imgs(test_imgs)
     y_test = np.array(
         [CATEGORY_2_IDX["face"]] * len(test_faces) + [CATEGORY_2_IDX["non-face"]] * len(test_non_faces))
 
-    return X_train, X_test, y_train, y_test
+    if read_img:
+        X_train = read_imgs(train_imgs)
+        X_test = read_imgs(test_imgs)
+
+        return X_train, X_test, y_train, y_test
+    return train_imgs, test_imgs, y_train, y_test

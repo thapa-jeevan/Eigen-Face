@@ -19,4 +19,4 @@ if __name__ == '__main__':
         None, test_transform, BATCH_SIZE)
 
     test_acc = get_model_predicton(model, test_dataloader)
-    print(test_acc)
+    print(f"Resnet model, test acc: {test_acc}")

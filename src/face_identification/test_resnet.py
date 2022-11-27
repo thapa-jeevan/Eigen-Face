@@ -48,5 +48,5 @@ if __name__ == '__main__':
     knn_model.fit(train_embd_ls, train_subj_ls)
     test_preds = knn_model.predict(test_embd_ls)
 
-    acc_ = sum(test_preds == train_subj_ls) / len(X)
+    acc_ = sum(test_preds == test_subj_ls) / len(test_subj_ls)
     print(f"Test Accuracy: {acc_}")

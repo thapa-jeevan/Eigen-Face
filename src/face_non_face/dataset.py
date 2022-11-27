@@ -54,7 +54,7 @@ def get_pretrain_data():
 
 def get_dataloaders(train_transform, test_transform, batchsize):
     train_img_list, test_img_list, y_train, y_test = get_pretrain_data()
-    valid_imgs, test_imgs, y_valid, y_test = get_face_cls_data()
+    valid_imgs, test_imgs, y_valid, y_test = get_face_cls_data(read_img=False)
 
     train_dataset = FaceClassification(train_img_list, y_train, train_transform)
     valid_dataset = FaceClassification(valid_imgs, y_valid, train_transform)
