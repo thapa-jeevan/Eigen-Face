@@ -4,6 +4,8 @@ import random
 import cv2
 import numpy as np
 
+from src.settings import CATEGORY_2_IDX
+
 
 def divide_face_imgs():
     subjects = list(range(1, 41))
@@ -37,7 +39,7 @@ def read_imgs(img_path_list, IMG_HEIGHT, IMG_WIDTH, ):
     return np.vstack(img_list)
 
 
-def get_face_cls_data(CATEGORY_2_IDX):
+def get_face_cls_data():
     train_faces, test_faces = divide_face_imgs()
     train_non_faces, test_non_faces = divide_non_face_imgs()
 
