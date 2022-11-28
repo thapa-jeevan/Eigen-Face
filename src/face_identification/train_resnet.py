@@ -13,7 +13,7 @@ from src.settings import CHECKPOINT_DIR
 from src.settings import IMG_SHAPE
 from src.utils import seed_everything
 
-seed_everything(42)
+seed_everything(98123)
 
 PRETRAIN_BATCH_SIZE = 1024 * 3
 FINETUNE_BATCH_SIZE = 80
@@ -86,7 +86,7 @@ if __name__ == '__main__':
     finetune_dataloader, test_dataloader = get_face_id_finetune_dataloaders(FINETUNE_BATCH_SIZE, train_transform, PER_SUB_IMGCOUNT)
 
     for epoch in tqdm(range(FINETUNE_EPOCHS)):
-        train_single_epoch(model, next(iter(finetune_dataloader)))
+        train_single_epoch(model, finetune_dataloader)
 
         torch.save({
             'epoch': epoch,

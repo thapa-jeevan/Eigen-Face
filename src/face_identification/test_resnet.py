@@ -5,13 +5,13 @@ import torch
 from sklearn.neighbors import KNeighborsClassifier
 from torchvision import transforms
 
+from .atat_dataset import get_face_id_test_dataloaders
 from src.models.model_resnet import resnet18
 from src.settings import CHECKPOINT_DIR
 from src.settings import IMG_SHAPE
-from .atat_dataset import get_face_id_test_dataloaders
 from src.utils import seed_everything
 
-seed_everything(42)
+seed_everything(98123)
 
 test_transform = transforms.Compose([
     transforms.Resize(IMG_SHAPE),
@@ -47,7 +47,7 @@ if __name__ == '__main__':
     train_embd_ls, train_subj_ls = predict(model, train_dataloader)
     test_embd_ls, test_subj_ls = predict(model, test_dataloader)
 
-    knn_model = KNeighborsClassifier(n_neighbors=5, algorithm="brute", metric="cosine")
+    knn_model = KNeighborsClassifier(n_neighbors=1, algorithm="brute", metric="cosine")
     knn_model.fit(train_embd_ls, train_subj_ls)
     test_preds = knn_model.predict(test_embd_ls)
 

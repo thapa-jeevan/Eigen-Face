@@ -9,7 +9,7 @@ from src.utils import calculate_accuracy
 from .data_utils import get_face_id_data
 from src.utils import seed_everything
 
-seed_everything(42)
+seed_everything(98123)
 
 if __name__ == '__main__':
     pca = PCA()
