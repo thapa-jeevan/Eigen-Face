@@ -1,4 +1,12 @@
 # Eigen-Face
+## Setup
+Download the following datasets and move into `data` directory.
+1. [training/validation data](http://host.robots.ox.ac.uk/pascal/VOC/voc2012/VOCtrainval_11-May-2012.tar) for PASCAL VOC dataset for non-face categories pretraining 
+2. [AT&T face images](https://www.kaggle.com/datasets/kasikrit/att-database-of-faces)
+3. [cropped and aligned celeba faces](https://drive.google.com/file/d/0B7EVK8r0v71pZjFTYXZWM3FlRnM/view?usp=share_link&resourcekey=0-dYn9z10tMJOBAkviAcfdyQ) and [face identity](https://drive.google.com/file/d/1_ee_0u7vcNLOfNLegJRHmolfH5ICW-XS/view?usp=share_link)
+4. our [non-face test images](https://drive.google.com/file/d/16VsYUZaV-36s0RIFuDsL33cMiIPMbwBG/view?usp=share_link)
+
+Also, download our [trained checkpoints](https://drive.google.com/drive/folders/1x00rOhIlZ6WNNc474OwmGKb-IcmMtASW?usp=share_link) for the CNN models for face classification and identification and store inside `checkpoints` directory.
 
 ## Dimensionality Reduction and Face Reconstruction
 Run the following command for analysis on Eigen-Face, importance of principal components and face reconstruction. 
