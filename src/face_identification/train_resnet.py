@@ -11,6 +11,9 @@ from src.face_identification.loss import contrastive_loss_entropy
 from src.models.model_resnet import resnet18
 from src.settings import CHECKPOINT_DIR
 from src.settings import IMG_SHAPE
+from src.utils import seed_everything
+
+seed_everything(42)
 
 PRETRAIN_BATCH_SIZE = 1024 * 3
 FINETUNE_BATCH_SIZE = 80

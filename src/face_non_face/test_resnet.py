@@ -6,6 +6,9 @@ from src.face_non_face.dataset import get_dataloaders
 from src.models.model_resnet import resnet18
 from src.settings import CHECKPOINT_DIR
 from .train_resnet import get_model_predicton, test_transform
+from src.utils import seed_everything
+
+seed_everything(42)
 
 BATCH_SIZE = 128
 

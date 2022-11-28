@@ -9,6 +9,9 @@ from src.models.model_resnet import resnet18
 from src.settings import CHECKPOINT_DIR
 from src.settings import IMG_SHAPE
 from .atat_dataset import get_face_id_test_dataloaders
+from src.utils import seed_everything
+
+seed_everything(42)
 
 test_transform = transforms.Compose([
     transforms.Resize(IMG_SHAPE),

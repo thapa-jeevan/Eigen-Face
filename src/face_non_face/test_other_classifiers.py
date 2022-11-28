@@ -7,7 +7,9 @@ from src.models.linear_discriminant_analysis import LDA
 from src.models.pca import PCA
 from src.utils import calculate_accuracy
 from .data_utils import get_face_cls_data
+from src.utils import seed_everything
 
+seed_everything(42)
 
 
 if __name__ == '__main__':
