@@ -5,7 +5,7 @@ DATA_DIR = os.path.join(ROOT_DIR, "data")
 REPORTS_DIR = os.path.join(ROOT_DIR, "reports")
 CHECKPOINT_DIR = os.path.join(ROOT_DIR, "checkpoints")
 
-IMG_HEIGHT, IMG_WIDTH = 112, 92
+IMG_HEIGHT, IMG_WIDTH = 218, 178
 IMG_SHAPE = (IMG_HEIGHT, IMG_WIDTH)
 
 # FaceNonFace classification

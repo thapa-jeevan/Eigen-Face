@@ -1,0 +1,1 @@
+python -m src.face_identification.train_resnet_celeba --img_scale 1. --batch_size 3072 --apply_random_train_aug True --temperature 0.01 --cuda 0
