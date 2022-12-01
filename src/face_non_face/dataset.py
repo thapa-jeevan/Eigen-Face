@@ -24,7 +24,7 @@ class FaceClassification(Dataset):
 
     def __getitem__(self, idx):
         img_path = self.img_list[idx]
-        img = Image.open(img_path).convert('L')
+        img = Image.open(img_path) #.convert('L')
         img = self.transform(img)
         return img, self.labels[idx]
 

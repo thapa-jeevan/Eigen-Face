@@ -49,7 +49,7 @@ class ATATFinetuneDataset(IterableDataset):
         batch_ids = (np.vstack([self.subj_ids] * self.per_subj_imgcount).T).ravel()
 
         for img_path, subj_id in zip(batch_imgs, batch_ids):
-            img = Image.open(img_path).convert('L')
+            img = Image.open(img_path) #.convert('L')
             if self.transform:
                 img = self.transform(img)
 

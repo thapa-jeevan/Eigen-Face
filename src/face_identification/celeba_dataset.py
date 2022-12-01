@@ -50,7 +50,7 @@ class CelebaDataset(IterableDataset):
 
         for img_name, sub_id in zip(batch_imgs, batch_ids):
             img_path = os.path.join(self.img_dir, img_name)
-            img = Image.open(img_path).convert('L')
+            img = Image.open(img_path) #.convert('L')
             if self.transform:
                 img = self.transform(img)
 
