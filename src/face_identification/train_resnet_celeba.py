@@ -30,7 +30,7 @@ def args_parse():
                         help='Temperature to apply for softmax.')
     parser.add_argument('--apply_random_train_aug', type=bool, default=True,
                         help='If true applies random augmentation in training.')
-    parser.add_argument('cuda', type=str, default='0',
+    parser.add_argument('--cuda', type=str, default='0',
                         help='Cuda Device to use for training.')
     args = parser.parse_args()
     return args
