@@ -78,7 +78,7 @@ def train_single_epoch(model, train_dataloader):
 
 
 def get_chekpoint_dir(args):
-    _exp = f"batchsize{args.batch_size}_temp{args.temperature}"
+    _exp = f"batchsize{args.batch_size}_temp{args.temperature}_imgsclae_{args.img_scale}_rnd_trns_{args.apply_random_train_aug}"
     checkpoint_dir = os.path.join(CHECKPOINT_DIR, _exp)
     os.makedirs(checkpoint_dir)
     return checkpoint_dir
