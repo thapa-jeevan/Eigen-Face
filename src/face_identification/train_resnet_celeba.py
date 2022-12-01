@@ -100,7 +100,7 @@ if __name__ == '__main__':
         return contrastive_loss_entropy(*x, args.temperature)
 
 
-    checkpoint_dir = get_chekpoint_dir()
+    checkpoint_dir = get_chekpoint_dir(args)
 
     for epoch in tqdm(range(PRETRAIN_EPOCHS)):
         train_single_epoch(model, pre_train_dataloader)
