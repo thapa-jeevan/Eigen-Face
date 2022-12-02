@@ -96,7 +96,7 @@ if __name__ == '__main__':
     model.cuda()
 
     if args.weight:
-        model.load_state_dict(torch.load(args.weight["model_state_dict"]))
+        model.load_state_dict(torch.load(args.weight)["model_state_dict"])
 
     optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 
