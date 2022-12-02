@@ -30,6 +30,8 @@ def args_parse():
                         help='Temperature to apply for softmax.')
     parser.add_argument('--apply_random_train_aug', type=bool, default=True,
                         help='If true applies random augmentation in training.')
+    parser.add_argument('--weight', type=str, default=None,
+                        help='File path to the trained checkpoint.')
     parser.add_argument('--cuda', type=str, default='0',
                         help='Cuda Device to use for training.')
     args = parser.parse_args()
@@ -92,6 +94,9 @@ if __name__ == '__main__':
 
     model = resnet18(num_classes=256)
     model.cuda()
+
+    if args.weight:
+        model.load_state_dict(torch.load(args.weight["model_state_dict"]))
 
     optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 
